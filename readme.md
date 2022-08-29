@@ -6,7 +6,7 @@
 
 
 
-![slogensettingpg](Picture4ReadMe\slogensettingpg.jpg)
+![slogensettingpg](Picture4ReadMe/slogensettingpg.jpg)
 
 
 
@@ -28,7 +28,7 @@
 
 ​	此报告详细介绍了该软件的开发过程。
 
-<video src="/Users/piaomz/Desktop/shiyigit/拾意演示视频.mp4"></video>
+<video src="拾意演示视频.mp4"></video>
 
 ​	
 
