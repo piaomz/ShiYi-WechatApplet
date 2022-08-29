@@ -1,0 +1,27 @@
+/* pages/mine/mine.wxss */
+@import "../../colorui/animation.wxss";
+image[class*="gif-"] {
+  display: block;
+}
+
+.header{
+  position: fixed;
+  overflow:scroll;
+  width: 100%;
+  top: 0;
+  z-index: 9999999;
+}
+.mytext{
+  display: flex;
+  align-items: center;
+  margin-top: 2%;
+  font-size:135%
+}
+.mytext2{
+  display: flex;
+  align-items: center;
+  margin-top: 1%;
+  margin-left: 18rpx;
+
+  font-size:100%
+}

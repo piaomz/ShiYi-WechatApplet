@@ -1,0 +1,32 @@
+
+<view style="height:{{windowHeight*1.095}}px;width:{{windowWidth}}px;"><!--最大-->
+  <view style="height:{{windowHeight*0.095}}px;background:black;display:flex;flex-direction:row;"> <!--导航-->
+    <view class="buttonBack" style="width:10%; margin-left:5%;padding-top:{{windowHeight*0.0525}}px"bindtap='onTapHome'><!--返回-->
+        <text class="cuIcon-back text-white"style="font-size:40rpx"></text>
+    </view>
+    <view style="display:flex;height:{{windowHeight*0.0475}}px;width:70%;justify-content: center;padding-top:{{windowHeight*0.0475}}px;font-size:40rpx;">
+    <text class="text-white">拾·意</text>
+    </view>
+  </view>
+  <view><!--主体-->
+    <view class="radius  shadow-blur" style="{{windowWidth}}px;">
+      <image src="https://image.weilanwl.com/gif/wave.gif" mode="scaleToFill" class=" response" style="width:100%;height:80rpx"></image>
+    </view>
+    
+    <view style="height:{{windowHeight*0.7}}px;margin-top:80rpx"><!--关于内容-->
+      <view class="cu-bar bg-wihte solid-bottom ">
+        <view class="action" style="font-size:50rpx">
+          <text class="cuIcon-title text-black"></text>赞赏拾意
+        </view>
+      </view>
+      <view class="padding bg-wihte">
+        <view class="text-left padding">你的使用就是对我们最好的赞赏</view>
+        <view class="text-center padding">你的参与就是对我们最好的鼓励</view>
+        <view class="text-right padding">拾意 项目组，感谢有你！</view>
+      </view>
+    </view>
+    
+
+  </view>
+  
+</view>

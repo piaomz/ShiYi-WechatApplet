@@ -1,0 +1,242 @@
+<!--index.wxml-->
+<view scroll-y class="DrawerPage {{modalName=='viewModal'?'show':''}}">
+  <!--0--><!--弹窗-->
+  <view class="cu-modal {{modalName=='DialogModal1'?'show':''}}">
+    <view class="cu-dialog">
+      <view class="cu-bar bg-white justify-end">
+        <view class="content">输入内容</view>
+        
+      </view>
+      <view class="padding-xl" style="height:100%;width:100%"><textarea maxlength="-1" hidden="{{!tanchuangyincang}}" bindinput="textareaBInput"value="{{textareaBValue}}" placeholder="多行文本输入框" placeholder-class="center"></textarea></view>
+      <view class="cu-bar bg-white justify-end">
+        <view class="action">
+          <button class="cu-btn line-black text-green" bindtap="hideModal3">取消</button>
+          <button class="cu-btn bg-black margin-left" bindtap="hideModal2">确定</button>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!--0--结束-->
+<view  style="height:64px;background:white">
+				<view slot="content" style="padding-top:27px;display: flex;justify-content: center;font-size:20px;color:black">拾·意</view>
+</view>
+
+<view class="mycontainer" style="height:{{windowHeight}}px" >
+
+  <movable-area id="area1">
+  <view class="main"style="height:{{windowHeight*0.85}}px">
+<view style='background:var(--blueblack);height:10px'>
+<image src="https://636c-cloud-1708-1259214274.tcb.qcloud.la/img/wave.gif?sign=8748b21599f258c7938c58abccf7d46f&t=1558182951" mode="scaleToFill" class="gif-black response" style="height:22px;transform:rotate(180deg)"></image>
+</view>
+<!--sjj-->
+<view class='mainfun' style="background:var(--blueblack);margin-top:1%">
+  <swiper style="height:{{windowHeight*0.82}}px" class="card-swiper" autoplay="true" interval="5000000000" duration="500" bindchange="cardSwiper" current="{{cardCur}}">
+  <swiper-item wx:for="{{swiperList}}" wx:key class="{{cardCur==index?'cur':''}}">
+    <view wx:if="{{item.type=='next'}}" class="swiper-item">
+      <view class="bg-img" style="background-image: url({{item.url}});background-size:cover;height:{{windowHeight*0.82}}px"bindtap='refresh'>
+      
+    </view> 
+    </view>
+    <view wx:if="{{item.type!='next'}}" class="swiper-item">
+      <view  class="bg-img" style="background-image: url({{item.url}});background-size:cover;height:{{windowHeight*0.727}}px">
+        <view style="height:{{windowHeight*0.75*0.65}}px;"></view>
+        <view style="height:{{windowHeight*0.75*0.35}}px;" class=" {{groupnum==0?'':'bg-shadeBottom'}} padding padding-top-xl flex-sub"><text style="margin-top:20%">
+          {{item.wenzi}}
+        
+          </text>         
+        </view>
+      </view>
+
+    </view> 
+     
+     <view wx:if="{{item.type!='next'}}" class="appreciateView flex flex-wrap justify-between align-center"style="background:var(--blueblack)" >
+      
+      <button class="cu-btn icon " style="background:var(--blueblack)">
+        <text wx:if="{{item.dz}}"class="cuIcon-likefill text-red" bindtap='onUpTop' style="font-size:150%"></text>
+        <text wx:else class="cuIcon-like text-white" bindtap='onUpTop' style="font-size:150%"></text>
+      </button>
+
+      <button class="cu-btn icon " style="background:var(--blueblack)">
+        <text class="cuIcon-comment text-white "style="font-size:150%" bindtap='opencomment'></text>
+      </button>
+
+      <button class="cu-btn icon " style="background:var(--blueblack)"bindtap="showModalzf"data-target="bottomModal">
+        <text class="cuIcon-forward text-white"style="font-size:150%"></text>
+      </button>
+      </view>
+   </swiper-item>
+  </swiper>
+</view>
+<!--sjj-->
+<!--sjj0.0.8-->
+<view class="cu-modal bottom-modal {{modalNamezf=='bottomModal'?'show':''}}">
+  <view class="cu-dialog">
+    
+    <view class="">
+      <view style="padding:10px 0px" >请尊重原创，分享请标注来源</view>
+      <button class="action text-white bg-black" style="padding:5px 0px" bindtap="">分享给朋友</button>
+      <button class="action text-white bg-black"style="padding:5px 0px"bindtap="hideModalzf">取消</button>
+    </view>
+    </view>
+</view>
+<!--sjj0.0.8-->
+
+
+
+  </view>
+    <movable-view y="{{y}}" style="height:{{windowHeight*0.03}}px" id="moveview1" direction="vertical" bindchange="onChange" out-of-bounds>
+    <view id="myview" style="height:{{windowHeight*1.1}}px;border-top-left-radius: {{windowHeight*0.03}}px;border-top-right-radius: {{windowHeight*0.03}}px" >
+      <view  style="height:{{windowHeight*0.03}}px;wiidth:100%"bindtap="myviewmove" ><text class="cuIcon-{{pos?'unfold':'fold'}} lg text-gray" style='display:flex;justify-content: center;font-size:40rpx'></text>
+      </view>
+      <view class="main2" bindtouchend="myviewmove2"style="height:{{windowHeight*0.97}}px" >
+      
+        <view style="height:10%;flex-direction:row;display: flex;">
+
+  <!--cyhr-->
+          <view style="width:22%;margin-left:3%" >
+          <view class="cu-avatar xl round margin-left" style="background-image:url({{userInfo.avatarUrl}});" id="touxiang"  bindgetuserinfo="getUserInfo"></view></view>
+          <view style='width:30%;'>
+  <!--cyhr-->      <button style="font-size:100%;margin-top:12%;margin-left:5%;width:70%" wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 登入 </button> 
+    <block wx:else>
+      <text class="text-gray text-lg mytext">{{userInfo.nickName}}</text>
+                </block> 
+        </view>         
+  <!--cyhr-->  
+
+          <view  style='width:25%'><text class="text-gray text-lg"style="display: flex;align-items: center;margin-top:21%;justify-content: center;" animation="{{animationData}}" wx:if='{{hidden}}'>{{helptext}}</text><text class="text-gray text-lg"style="display: flex;align-items: center;margin-top:21%;justify-content: center;" animation="{{animationData2}}" wx:if='{{hidden2}}'>滑动以发布</text></view>
+          <view class="cu-item" style="width:17%;margin-right:0%; display: flex;flex-direction:column;align-items: center;" bindtap="showModal" data-target="viewModal">
+          <text class="cuIcon-settings  text-gray" id="fabuBut" style="height:50%;width:50%;margin-bottom:20%;"></text>
+          <text class="lg text-gray"style="height:50%;width:50%;margin-bottom:15%;margin-left:18%">更多</text>
+        </view> 
+        </view>
+        <view class="solids-bottom" style="height:4%;margin-left:5%;margin-right:5%"></view>
+          <!--0-->
+        <view style="height:{{windowHeight*0.1}}px;background:red">
+          <view class="bg-white padding solid{{size?'s':''}}-top margin-top" style='height:100%；style="display: flex;align-items: center;justify-content: center"'>
+            <view class="cu-steps" >
+              <view class="cu-item {{index>basics?'':basicsList[index].color}}"  wx:for="{{basicsList}}" wx:key>
+                <text class="cuIcon-{{item.icon}}"></text> {{item.name}}
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="solid{{size?'s':''}}-top " style="height:{{windowHeight*0.3}}px;margin-top:7%;background:yellow">
+          <view class="cu-form-group margin-top" style='height:100%'>
+          <view bindtap="showModal2" data-target="DialogModal1" style="height:100%;width:100%;display: flex;justify-content: center;align-items: center;">
+            <text wx:if='{{!textareaAValue}}'>点击以输入</text><text wx:if='{{textareaAValue}}' style="word-break:break-all;">{{textareaAValue}}</text>
+            
+          </view>
+		      <!--输入发布内容-->
+	        </view>
+        </view>
+        <view style="height:{{windowHeight*0.2}}px;background:green"><!--流程图-->
+          <view class="cu-bar bg-white margin-top padding solid{{size?'s':''}}-top margin-top"style='height:20%'>
+		        <view class="action">背景图片上传</view>
+		        <view class="action">{{imgList.length}}/1</view><!--图片数量-->
+	        </view>
+          <view class="cu-form-group padding solid{{size?'s':''}}-top" style='height:80%'>
+		        <view class="grid col-4 grid-square flex-sub">
+		        	<view class="bg-img" wx:for="{{imgList}}" wx:key="{{index}}" bindtap="ViewImage" data-url="{{imgList[index]}}">
+		        		<image src='{{imgList[index]}}' mode='aspectFill'></image>
+	        			<view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
+	        				<text class="cuIcon-close"></text>
+	        			</view>
+	        		</view>
+		        	<view class="solids" bindtap="ChooseImage" wx:if="{{imgList.length<1}}">
+		        		<text class="cuIcon-cameraadd"></text>
+		        	</view>
+	        	</view>
+        	</view>
+        </view>
+        <view style="height:{{windowHeight*0.07}}px;">
+<button class="cu-btn text-white bg-black" disabled='{{imgList.length==0 || textareaAValue==null || textareaAValue==""}}' bindtap="FabuBut" style="margin-left:75%;margin-top:1.25%">发布</button>
+        </view>
+        
+        <!--0-结束-->
+
+      </view>
+    </view>
+    <!-- 
+    <cover-view class="main"style="height:{{windowHeight*0.85}}px"></cover-view>    
+    <textarea maxlength="-1" bindinput="textareaAInput" placeholder="多行文本输入框" style='height:100%'></textarea>
+    <input maxlength="-1" bindinput="textareaAInput" placeholder="输入" style="height:100%;width:100%;margin-top:2%"></input>
+<button class="cu-btn bg-grey lg"id="fabuBut">发布</button>
+    -->
+    
+    
+    
+    </movable-view>
+  </movable-area>
+
+</view>
+
+
+</view>
+<view class="DrawerClose {{modalName=='viewModal'?'show':''}}" bindtap="hideModal">
+			<text class="cuIcon-pullright"></text>
+		</view>
+		<scroll-view scroll-y class="DrawerWindow {{modalName=='viewModal'?'show':''}}">
+			<!--0-->
+      <view class="menu2" style="height:{{windowHeight}}px">
+        <view style="height:{{windowHeight*0.4}}px">
+          <view style="height:{{windowHeight*0.055}}px">
+            <!--位置占用-->
+          </view>
+            <view style="height:{{windowHeight*0.345}}px">
+              <view class="bg-img bg-mask padding-tb-xl" style="background-image: url('https://636c-cloud-1708-1259214274.tcb.qcloud.la/logo/slogensettingpg.jpg?sign=7662bb8edaa2c9bd92441d78cd4b7c0d&t=1558684344');height: {{windowHeight*0.345}}px">             
+                
+                <!--图片可用位置-->
+              </view>
+          </view>
+        </view>
+        <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
+          <view class="cu-item arrow" bindtap='onTapMine'>
+           <button class="cu-btn content">
+           <text class="cuIcon-myfill text-grey"></text>
+           <text class="text-grey">我的拾意</text>
+          </button>
+        </view>
+        
+
+
+        <!--sjj0.0.7-->
+        <view class="cu-item arrow" bindtap='onTapTimeLine'>
+          <button class="cu-btn content">
+            <text class="cuIcon-formfill text-green"></text>
+            <text class="text-grey">我的发布</text>
+          </button>
+        </view>
+        <!--sjj0.0.7-->
+
+
+        <view class="cu-item arrow" bindtap='onTapAdmire'>
+          <button class="cu-btn content">
+            <text class="cuIcon-appreciatefill text-red"></text>
+            <text class="text-grey">赞赏支持</text>
+          </button>
+        </view>
+        <view class="cu-item arrow" bindtap='onTapSupport'>
+          <button class="cu-btn content">
+            <text class="cuIcon-writefill text-cyan"></text>
+            <text class="text-grey">意见反馈</text>
+          </button>
+        </view>
+
+        <view class="cu-item arrow" bindtap='onTapAbout'>
+          <button class="cu-btn content">
+            <text class="cuIcon-more text-gradualPurple"></text>
+            <text class="text-grey">关于拾意</text>
+          </button>
+        </view>
+
+        <view class="cu-item arrow" bindtap='onTapKaifa'>
+          <button class="cu-btn content">
+            <text class="cuIcon-settings text-orange"></text>
+            <text class="text-grey">开发管理</text>
+          </button>
+        </view>
+      </view>
+    </view>
+    
+      <!--0-->
+		</scroll-view>
